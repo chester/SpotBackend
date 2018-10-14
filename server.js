@@ -64,7 +64,7 @@ app.post('/sendDocuSign/:name/:email/:shortDesc', function (req, res) {
   
     //Set the Email Subject line and email message
     envDef.emailSubject = req.params.shortDesc;//'Please sign this document sent from Node SDK';
-    envDef.emailBlurb = req.paramas.shortDesc;//'Please sign this document sent from the DocuSign Node.JS SDK.'
+    envDef.emailBlurb = req.params.shortDesc;//'Please sign this document sent from the DocuSign Node.JS SDK.'
   
     //Read the file from the document and convert it to a Base64String
     var doc = new docusign.Document();
