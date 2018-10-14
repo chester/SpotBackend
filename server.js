@@ -34,7 +34,7 @@ const recipientName = 'Test Recipient';
 const recipientEmail = 'spotapp123@gmail.com';
 
 //Point this to the document you wish to send's location on the local machine. Default location is __workingDir\fileName
-const fileName = './testDoc.pdf';
+const fileName = './leaseAgreement.pdf';
 
 //-------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------
@@ -95,7 +95,7 @@ app.post('/sendDocuSign/:name/:email/:shortDesc', function (req, res) {
     signHere.recipientId = '1';
     signHere.tabLabel = 'SignHereTab';
     signHere.xPosition = '50';
-    signHere.yPosition = '50';
+    signHere.yPosition = '-50';
   
     //Create the array for SignHere tabs, then add it to the general tab array
     signHereTabArray = [];
