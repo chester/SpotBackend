@@ -45,7 +45,7 @@ app.get('/', function(req, res) {
 	});
 });
 
-app.post('/sendDocuSign/:email', function (req, res) {
+app.post('/sendDocuSign/:name/:email/:shortDesc', function (req, res) {
 
     apiClient.setBasePath('https://demo.docusign.net/restapi');
     apiClient.addDefaultHeader('Authorization', 'Bearer ' + OAuthToken);
@@ -63,14 +63,14 @@ app.post('/sendDocuSign/:email', function (req, res) {
     var envDef = new docusign.EnvelopeDefinition();
   
     //Set the Email Subject line and email message
-    envDef.emailSubject = 'Please sign this document sent from Node SDK';
-    envDef.emailBlurb = 'Please sign this document sent from the DocuSign Node.JS SDK.'
+    envDef.emailSubject = req.params.shortDesc;//'Please sign this document sent from Node SDK';
+    envDef.emailBlurb = req.paramas.shortDesc;//'Please sign this document sent from the DocuSign Node.JS SDK.'
   
     //Read the file from the document and convert it to a Base64String
     var doc = new docusign.Document();
     doc.documentBase64 = pdfBase64;
     doc.fileExtension = 'pdf';
-    doc.name = 'Node Doc Send Sample';
+    doc.name = 'Parking Space Rental Agreement';
     doc.documentId = '1';
   
     //Push the doc to the documents array.
@@ -80,7 +80,7 @@ app.post('/sendDocuSign/:email', function (req, res) {
   
     //Create the signer with the previously provided name / email address
     var signer = new docusign.Signer();
-    signer.name = recipientName;
+    signer.name = req.params.name;//recipientName;
     //signer.email = recipientEmail;
     signer.email = req.params.email;
     signer.routingOrder = '1';
@@ -122,7 +122,6 @@ app.post('/sendDocuSign/:email', function (req, res) {
   
     // *** End envelope creation ***
     
-    var envelopeSummary = "abcabc";
     
     //Send the envelope
     var envelopesApi = new docusign.EnvelopesApi();
