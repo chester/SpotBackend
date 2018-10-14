@@ -95,7 +95,7 @@ app.post('/sendDocuSign/:name/:email/:shortDesc', function (req, res) {
     signHere.recipientId = '1';
     signHere.tabLabel = 'SignHereTab';
     signHere.xPosition = '50';
-    signHere.yPosition = '800';
+    signHere.yPosition = '700';
   
     //Create the array for SignHere tabs, then add it to the general tab array
     signHereTabArray = [];
